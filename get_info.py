@@ -8,5 +8,9 @@ def get_image_pos(name):
 
 
 def image_exists(name):
-    if pyAG.locateOnScreen(f'images/{name}.jpg', confidence='0.9') is not None:
-        return True
+    try:
+        if pyAG.locateOnScreen(f'images/{name}.jpg', confidence='0.9') is not None:
+            return True
+    except pyAG.ImageNotFoundException:
+        return False
+
